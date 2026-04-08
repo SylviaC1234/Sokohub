@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 
 @Composable
-fun ProductScreen(){
+fun ProductScreen(navController: NavController){
     Column(
         modifier = Modifier.fillMaxSize()
 
@@ -27,5 +29,5 @@ fun ProductScreen(){
 @Preview(showBackground = true)
 @Composable
 fun ProductScreenPreview(){
-    ProductScreen()
+    ProductScreen(rememberNavController())
 }

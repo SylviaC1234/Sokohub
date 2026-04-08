@@ -1,4 +1,4 @@
-package com.sylvia.sokohub.ui.screens.OnboardingScreen
+package com.sylvia.sokohub.ui.screens.onboarding
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -15,20 +15,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.sylvia.sokohub.R
+import com.sylvia.sokohub.navigation.ROUT_HOME
 import com.sylvia.sokohub.ui.theme.newBlue
 
 @Composable
-fun OnboardingScreen(){
+fun OnboardingScreen(navController: NavController){
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -76,7 +77,7 @@ fun OnboardingScreen(){
 
             )
         Button(
-            onClick = {},
+            onClick = {navController.navigate(ROUT_HOME)},
             colors = ButtonDefaults.buttonColors(newBlue),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(350.dp)
@@ -107,5 +108,5 @@ fun OnboardingScreen(){
 @Preview(showBackground = true)
 @Composable
 fun OnboardingScreenPreview(){
-    OnboardingScreen()
+    OnboardingScreen(rememberNavController())
 }
