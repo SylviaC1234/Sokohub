@@ -1,5 +1,6 @@
 package com.sylvia.sokohub.navigation
 
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -10,10 +11,12 @@ import com.sylvia.sokohub.ui.screens.about.AboutScreen
 import com.sylvia.sokohub.ui.screens.auth.LoginScreen
 import com.sylvia.sokohub.ui.screens.auth.RegisterScreen
 import com.sylvia.sokohub.ui.screens.home.HomeScreen
+import com.sylvia.sokohub.ui.screens.intent.IntentScreen
 import com.sylvia.sokohub.ui.screens.onboarding.OnboardingScreen
 import com.sylvia.sokohub.ui.screens.product.ProductScreen
 import com.sylvia.sokohub.ui.screens.service.ServiceScreen
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
@@ -52,7 +55,10 @@ fun AppNavHost(
             ProductScreen(navController)
         }
 
+         composable(ROUT_INTENT) {
+             IntentScreen(navController)
 
+         }
 
     }
 }
