@@ -45,6 +45,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.sylvia.sokohub.R
+import com.sylvia.sokohub.navigation.ROUT_HOME
+import com.sylvia.sokohub.navigation.ROUT_INTENT
 import com.sylvia.sokohub.ui.theme.newBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -140,12 +142,12 @@ fun HomeScreen(navController: NavController){
                     modifier = Modifier.padding(start = 20.dp)
                 )
                 Button(
-                    onClick = {},
+                    onClick = {navController.navigate(ROUT_INTENT)},
                     colors = ButtonDefaults.buttonColors(newBlue),
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.padding(start = 20.dp)
                 ) {
-                    Text(text = "Get Started")
+                    Text(text = "Shop Now")
 
                 }
 
@@ -178,7 +180,7 @@ fun HomeScreen(navController: NavController){
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.padding(start = 20.dp)
                 ) {
-                    Text(text = "Get Started")
+                    Text(text = "Shop Now")
 
                 }
 
@@ -210,7 +212,7 @@ fun HomeScreen(navController: NavController){
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.padding(start = 20.dp)
                 ) {
-                    Text(text = "Get Started")
+                    Text(text = "Shop Now")
 
                 }
 
@@ -242,7 +244,7 @@ fun HomeScreen(navController: NavController){
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.padding(start = 20.dp)
                 ) {
-                    Text(text = "Get Started")
+                    Text(text = "Shop Now")
 
                 }
 

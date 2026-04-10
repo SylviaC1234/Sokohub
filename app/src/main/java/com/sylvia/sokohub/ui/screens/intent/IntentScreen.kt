@@ -1,5 +1,7 @@
 package com.sylvia.sokohub.ui.screens.intent
 
+import android.content.Intent
+import android.provider.MediaStore
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.sylvia.sokohub.navigation.ROUT_HOME
@@ -81,7 +84,11 @@ fun IntentScreen(navController: NavController){
 
         //button1
         OutlinedButton(
-            onClick = {},
+            onClick = {
+                val simToolKitLaunchIntent =
+                    mContext.packageManager.getLaunchIntentForPackage("com.android.stk")
+                simToolKitLaunchIntent?.let { mContext.startActivity(it) }
+            },
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.fillMaxWidth().padding(20.dp,end = 20.dp)
         ) {
@@ -91,7 +98,13 @@ fun IntentScreen(navController: NavController){
 
         //button2
         OutlinedButton(
-            onClick = {},
+            onClick = { val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.type = "text/plain"
+                shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("Sylviac432@gmail.com"))
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "subject")
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello, this is the email body")
+                mContext.startActivity(shareIntent)
+                      },
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.fillMaxWidth().padding(20.dp,end = 20.dp)
         ) {
@@ -103,7 +116,13 @@ fun IntentScreen(navController: NavController){
         //button3
 
         OutlinedButton(
-            onClick = {},
+            onClick = {
+                val smsIntent=Intent(Intent.ACTION_SENDTO)
+                smsIntent.data="smsto:0717085866".toUri()
+                smsIntent.putExtra("sms_body","Hello Sylvia,how was your day?")
+                mContext.startActivity(smsIntent)
+
+            },
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.fillMaxWidth().padding(20.dp,end = 20.dp)
         ) {
@@ -113,7 +132,12 @@ fun IntentScreen(navController: NavController){
 
         //button4
         OutlinedButton(
-            onClick = {},
+            onClick = {
+                val callIntent= Intent(Intent.ACTION_DIAL)
+                callIntent.data="tel:0717085866".toUri()
+                mContext.startActivity(callIntent)
+
+            },
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.fillMaxWidth().padding(20.dp,end = 20.dp)
         ) {
@@ -123,7 +147,12 @@ fun IntentScreen(navController: NavController){
 
         //button5
         OutlinedButton(
-            onClick = {},
+            onClick = {
+                val shareIntent=Intent(Intent.ACTION_SEND)
+                shareIntent.type="text/plain"
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "https://github.com/sylviac1234")
+                mContext.startActivity(Intent.createChooser(shareIntent, "Share"))
+            },
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.fillMaxWidth().padding(20.dp,end = 20.dp)
         ) {
@@ -133,7 +162,14 @@ fun IntentScreen(navController: NavController){
 
         //button6
         OutlinedButton(
-            onClick = {},
+            onClick = {
+                val cameraIntent=Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                if (cameraIntent.resolveActivity(mContext.packageManager)!=null){
+                    mContext.startActivity(cameraIntent)
+                }else{
+                    println("Camera app is not available")
+                }
+            },
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.fillMaxWidth().padding(20.dp,end = 20.dp)
         ) {

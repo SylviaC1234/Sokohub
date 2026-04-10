@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.sylvia.sokohub.R
 import com.sylvia.sokohub.navigation.ROUT_HOME
+import com.sylvia.sokohub.navigation.ROUT_REGISTER
 import com.sylvia.sokohub.ui.theme.newBlue
 
 @Composable
@@ -77,7 +78,7 @@ fun OnboardingScreen(navController: NavController){
 
             )
         Button(
-            onClick = {navController.navigate(ROUT_HOME)},
+            onClick = {navController.navigate(ROUT_REGISTER)},
             colors = ButtonDefaults.buttonColors(newBlue),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(350.dp)
