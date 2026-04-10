@@ -137,7 +137,18 @@ fun LoginScreen(navController: NavController){
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        TextButton(
+            onClick ={} ) {
+            Text(text = "Don't have an account? Register",
+                fontSize = 15.sp,
+                color = newBlue
 
+            )
+
+
+
+
+        }
 
 
         TextButton(
