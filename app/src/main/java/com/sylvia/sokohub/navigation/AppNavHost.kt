@@ -14,14 +14,16 @@ import com.sylvia.sokohub.ui.screens.home.HomeScreen
 import com.sylvia.sokohub.ui.screens.intent.IntentScreen
 import com.sylvia.sokohub.ui.screens.onboarding.OnboardingScreen
 import com.sylvia.sokohub.ui.screens.product.ProductScreen
+import com.sylvia.sokohub.ui.screens.scaffold.ScaffoldScreen
 import com.sylvia.sokohub.ui.screens.service.ServiceScreen
+import com.sylvia.sokohub.ui.screens.splash.SplashScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUT_ONBOARDING
+    startDestination: String = ROUT_SPLASH
 ) {
 
     NavHost(
@@ -59,6 +61,16 @@ fun AppNavHost(
              IntentScreen(navController)
 
          }
+
+        composable(ROUT_SPLASH) {
+            SplashScreen(navController)
+
+        }
+
+        composable(ROUT_SCAFFOLD) {
+            ScaffoldScreen(navController)
+
+        }
 
     }
 }
