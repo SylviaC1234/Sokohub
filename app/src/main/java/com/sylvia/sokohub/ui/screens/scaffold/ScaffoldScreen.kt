@@ -1,5 +1,6 @@
 package com.sylvia.sokohub.ui.screens.scaffold
 
+import android.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +12,9 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -34,6 +37,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.sylvia.sokohub.navigation.ROUT_HOME
+import com.sylvia.sokohub.navigation.ROUT_INTENT
+import com.sylvia.sokohub.navigation.ROUT_LOGIN
 import com.sylvia.sokohub.ui.theme.newBlue
 
 
@@ -60,7 +66,19 @@ fun ScaffoldScreen(navController: NavController){
                     containerColor = newBlue,
                     titleContentColor = Color.White,
                     navigationIconContentColor = Color.White
-                )
+                ),
+                actions =  {
+                    IconButton(onClick = {}) {
+                        Icon(imageVector = Icons.Default.ShoppingCart, contentDescription = "menu", tint = Color.White
+                            )
+                    }
+
+
+                    IconButton(onClick = {}) {
+                        Icon(imageVector = Icons.Default.Notifications, contentDescription = "menu", tint = Color.White)
+                    }
+
+                }
             )
         },
 
@@ -70,38 +88,31 @@ fun ScaffoldScreen(navController: NavController){
                 containerColor = newBlue
             ){
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
-                    label = { Text("Home") },
+                    icon = { Icon(Icons.Default.Home, contentDescription = "Home", tint = Color.White) },
+                    label = { Text("Home", color = Color.White) },
                     selected = selectedIndex == 0,
                     onClick = { selectedIndex = 0
-                        //navController.navigate(ROUT_HOME)
+                       navController.navigate(ROUT_HOME)
                     }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.Favorite, contentDescription = "Favorites") },
-                    label = { Text("Favorites") },
+                    icon = { Icon(Icons.Default.Favorite, contentDescription = "Favorites", tint = Color.White) },
+                    label = { Text("Intent",color = Color.White) },
                     selected = selectedIndex == 1,
                     onClick = { selectedIndex = 1
-                        // navController.navigate(ROUT_HOME)
+                        navController.navigate(ROUT_INTENT)
                     }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Default.Person, contentDescription = "Profile") },
-                    label = { Text("Profile") },
+                    icon = { Icon(Icons.Default.Person, contentDescription = "Profile", tint = Color.White) },
+                    label = { Text("LogIn",color = Color.White) },
                     selected = selectedIndex == 2,
                     onClick = { selectedIndex = 2
-                        //  navController.navigate(ROUT_HOME)
+                        navController.navigate(ROUT_LOGIN)
                     }
                 )
 
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.Person, contentDescription = "Profile") },
-                    label = { Text("Profile") },
-                    selected = selectedIndex == 2,
-                    onClick = { selectedIndex = 2
-                        //  navController.navigate(ROUT_HOME)
-                    }
-                )
+
 
             }
         },
@@ -124,9 +135,6 @@ fun ScaffoldScreen(navController: NavController){
 
 
                 //Main Contents of the page
-                Text(text = "Welcome to Homescreen Screen", fontSize = 20.sp)
-                Spacer(modifier = Modifier.height(8.dp))
-                Text("This is where the main content goes.")
 
 
 

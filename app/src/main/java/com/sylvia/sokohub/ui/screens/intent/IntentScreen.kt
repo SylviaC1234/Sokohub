@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.sylvia.sokohub.navigation.ROUT_ABOUT
 import com.sylvia.sokohub.navigation.ROUT_HOME
 import com.sylvia.sokohub.ui.theme.newBlue
 
@@ -56,7 +57,7 @@ fun IntentScreen(navController: NavController){
                 }
             },
             actions =  {
-                IconButton(onClick = {}) {
+                IconButton(onClick = { navController.navigate(ROUT_ABOUT) }) {
                     Icon(imageVector = Icons.Default.ShoppingCart, contentDescription = "menu")
                 }
 
