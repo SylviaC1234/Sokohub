@@ -18,7 +18,7 @@ class AuthViewModel(var navController: NavController, var context: Context){
 
     fun signup(username:String, email:String, password:String, confirmpassword:String){
 
-        if (email.isBlank() || password.isBlank() || confirmpassword.isBlank()) {
+        if (email.isBlank() || password.isBlank() || confirmpassword.isBlank() || username.isBlank()) {
             Toast.makeText(context,"Please email and password cannot be blank", Toast.LENGTH_LONG).show()
         } else if (password != confirmpassword) {
             Toast.makeText(context,"Password do not match", Toast.LENGTH_LONG).show()
@@ -32,7 +32,7 @@ class AuthViewModel(var navController: NavController, var context: Context){
                     // DEFAULT role = "user"
                     val role = "user"
 
-                    val userdata = User(
+                    val userdata = User(  //Info is fetched from the model User
                         username = username,
                         email = email,
                         password = password,
@@ -40,7 +40,7 @@ class AuthViewModel(var navController: NavController, var context: Context){
                         role = role
                     )
 
-                    val regRef = FirebaseDatabase.getInstance().getReference("Users/$uid")
+                    val regRef = FirebaseDatabase.getInstance().getReference("Users/$uid") //it refers to the backend model where the info goes-Users
 
                     regRef.setValue(userdata).addOnCompleteListener { result ->
 
@@ -97,7 +97,7 @@ class AuthViewModel(var navController: NavController, var context: Context){
                     }
 
                 } else {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Input correct email and password", Toast.LENGTH_SHORT).show()
                 }
             }
         }
