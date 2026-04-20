@@ -160,7 +160,7 @@ fun AboutScreen(navController: NavController){
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp)
+                        .padding(vertical = 10.dp)
                         .height(180.dp),
                     shape = RoundedCornerShape(20.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.Blue),
@@ -225,7 +225,7 @@ fun AboutScreen(navController: NavController){
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Icon(Icons.Default.Email, contentDescription = null, tint = Color.White)
-                            Spacer(modifier = Modifier.width(10.dp))
+                            Spacer(modifier = Modifier.width(8.dp))
 
                             val mContext = LocalContext.current
                             OutlinedButton(
