@@ -4,16 +4,20 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.sylvia.sokohub.ui.screens.about.AboutScreen
 import com.sylvia.sokohub.ui.screens.auth.LoginScreen
 import com.sylvia.sokohub.ui.screens.auth.RegisterScreen
 import com.sylvia.sokohub.ui.screens.home.HomeScreen
 import com.sylvia.sokohub.ui.screens.intent.IntentScreen
 import com.sylvia.sokohub.ui.screens.onboarding.OnboardingScreen
-import com.sylvia.sokohub.ui.screens.product.ProductScreen
+import com.sylvia.sokohub.ui.screens.products.AddProductScreen
+import com.sylvia.sokohub.ui.screens.products.UpdateProductScreen
+import com.sylvia.sokohub.ui.screens.products.ViewProductScreen
 import com.sylvia.sokohub.ui.screens.scaffold.ScaffoldScreen
 import com.sylvia.sokohub.ui.screens.service.ServiceScreen
 import com.sylvia.sokohub.ui.screens.splash.SplashScreen
@@ -53,11 +57,7 @@ fun AppNavHost(
             ServiceScreen(navController)
         }
 
-        composable(ROUT_PRODUCT) {
-            ProductScreen(navController)
-        }
-
-         composable(ROUT_INTENT) {
+        composable(ROUT_INTENT) {
              IntentScreen(navController)
 
          }
@@ -71,6 +71,20 @@ fun AppNavHost(
             ScaffoldScreen(navController)
 
         }
+        composable(ROUTE_ADD_PRODUCT) { AddProductScreen(navController) }
+
+        composable(ROUTE_VIEW_PRODUCTS) { ViewProductScreen(navController) }
+
+        composable(
+            ROUTE_UPDATE_PRODUCT,
+            arguments = listOf(navArgument("productId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val productId = backStackEntry.arguments?.getString("productId")!!
+            UpdateProductScreen(navController, productId)
+        }
+
+
+
 
     }
 }
